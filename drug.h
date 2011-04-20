@@ -5,18 +5,24 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
+
 class Drug {
 protected:
   int id;
   string name;
   string laboratory;
   string expiration_date;
+  float price;
   float pooling;
   string measure_unit;
   int quantity;
   
+  // only children accesses
+  virtual void setMeasureUnit(string value);
+  
 public:
-  Drug(int id);
+  Drug();
   ~Drug();
 
   // START: gets and sets
@@ -39,7 +45,6 @@ public:
   virtual void setPooling(float value);
   
   virtual string getMeasureUnit() const;
-  virtual void setMeasureUnit(string value);
   
   virtual int getQuantity() const;
   virtual void setQuantity(int value);
