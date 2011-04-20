@@ -6,7 +6,7 @@
 
 class Sachet : public Drug {
 protected:
-
+  int dose;
   
 public:
   Sachet();	
@@ -15,10 +15,10 @@ public:
   // START: gets and sets
   // END: gets and sets  
   
+  virtual int getDose() const;
+  virtual void setDose(int value);
   
   // START: methods
-  
-  // setar -> measure_unit and id
   
   // END: methods
   

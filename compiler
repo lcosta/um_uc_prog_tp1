@@ -1,3 +1,4 @@
+rm app
 g++ -c *.cpp
 g++ -o app *.cpp
 rm -fr *.o

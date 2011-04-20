@@ -6,7 +6,6 @@
 
 class Tablet : public Drug {
 protected:
-
   
 public:
   Tablet();	
