@@ -17,6 +17,7 @@ protected:
   float pooling;
   string measure_unit;
   int quantity;
+  int stock;
   
   // only children accesses
   virtual void setMeasureUnit(string value);
@@ -48,11 +49,14 @@ public:
   
   virtual int getQuantity() const;
   virtual void setQuantity(int value);
+  
+  virtual int getStock() const;
+  virtual void setStock(int value);
   // END: gets and sets  
   
   
   // START: methods
-  virtual float getPricePooling() const;
+  virtual float getPricePooling();
   // END: methods
   
 

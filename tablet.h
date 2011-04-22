@@ -16,9 +16,6 @@ public:
   
   
   // START: methods
-  
-  // setar -> measure_unit and id
-  
   // END: methods
   
 

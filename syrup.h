@@ -18,14 +18,10 @@ public:
   virtual void setDose(int value);
   virtual string getTypeOfCasing() const;
   virtual void setTypeOfCasing(string value);
-
   // END: gets and sets  
   
   
   // START: methods
-  
-  // setar -> measure_unit and id
-  
   // END: methods
   
 

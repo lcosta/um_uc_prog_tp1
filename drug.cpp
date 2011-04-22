@@ -73,11 +73,19 @@ void Drug::setQuantity(int value) {
   quantity = value;
 }
 
+int Drug::getStock() const {
+  return stock;
+}
+
+void Drug::setStock(int value) {
+  stock = value;
+}
+
 // END: gets and sets
 
 
 // START: methods
-float Drug::getPricePooling() const {
+float Drug::getPricePooling(){
   return 0;
 };
 // END: methods

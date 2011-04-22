@@ -13,13 +13,11 @@ public:
   ~Sachet();
 
   // START: gets and sets
-  // END: gets and sets  
-  
   virtual int getDose() const;
   virtual void setDose(int value);
+  // END: gets and sets  
   
   // START: methods
-  
   // END: methods
   
 
