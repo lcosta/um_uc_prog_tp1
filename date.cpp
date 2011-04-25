@@ -1,5 +1,8 @@
 #include "date.h"
 
+Date::Date(){
+}
+
 Date::Date(int const d, int const m, int const y){
   day = d;
   month = m;

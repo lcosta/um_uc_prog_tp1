@@ -13,6 +13,7 @@ protected:
   
 public:
   Date(int const d, int const m, int const y);
+  Date();
   ~Date();
   
   int getDay() const;

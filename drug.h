@@ -41,6 +41,7 @@ public:
   virtual void setExpirationDate(Date value);
   
   virtual float getPrice() const;
+  virtual float getPrice(bool w_pooling);
   virtual void setPrice(float value);
   
   virtual float getPooling() const;
@@ -57,7 +58,6 @@ public:
   
   
   // START: methods
-  virtual float getPricePooling();
   // END: methods
   
 

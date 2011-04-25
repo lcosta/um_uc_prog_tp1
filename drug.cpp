@@ -45,6 +45,19 @@ float Drug::getPrice() const {
   return price;
 }
 
+float Drug::getPrice(bool w_pooling) {
+  
+  float p;
+  if (w_pooling) {
+    p = getPrice() * (1-getPooling());
+  }
+  else {
+    p = getPrice();
+  }
+  
+  return p;
+}
+
 void Drug::setPrice(float value) {
   price = value;
 }
@@ -85,7 +98,5 @@ void Drug::setStock(int value) {
 
 
 // START: methods
-float Drug::getPricePooling(){
-  return 0;
-};
+
 // END: methods

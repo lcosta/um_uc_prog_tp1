@@ -26,7 +26,9 @@ int getdir (string dir)
 
     while ((dirp = readdir(dp)) != NULL) {
         //files.push_back(string(dirp->d_name));
-        cout << string(dirp->d_name) << "\n";
+        if(strcmp(dirp->d_name, ".") != 0 && strcmp(dirp->d_name, "..") != 0){
+          cout << string(dirp->d_name) << "\n";
+        }
     }
     closedir(dp);
     return 0;

@@ -1,3 +1,7 @@
 **.o
 app
 /lixo/
+/app.1
+/app.xcodeproj/
+/build/
+**.cpp.out
