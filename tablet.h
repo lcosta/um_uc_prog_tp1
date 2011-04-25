@@ -8,7 +8,18 @@ class Tablet : public Drug {
 protected:
   
 public:
-  Tablet();	
+  Tablet();
+  
+  Tablet(int const _id,
+         string const  _name,
+         string const  _laboratory,
+         Date const  _date,
+         float const  _price,
+         float const  _pooling,
+         int const  _quantity,
+         int const  _stock
+         );
+         
   ~Tablet();
 
   // START: gets and sets

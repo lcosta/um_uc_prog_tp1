@@ -3,7 +3,29 @@
 Tablet::Tablet() : Drug() {
   
   // configure specific unit of product
-  setMeasureUnit(" comprimidos(s)");
+  setMeasureUnit("comprimidos(s)");
+}
+
+Tablet::Tablet(int const _id,
+               string const  _name,
+               string const  _laboratory,
+               Date const  _date,
+               float const  _price,
+               float const  _pooling,
+               int const  _quantity,
+               int const  _stock) : Drug() {
+  
+  setMeasureUnit("comprimidos(s)");
+  
+  setId(_id);
+  setName(_name);
+  setLaboratory(_laboratory);
+  setExpirationDate(_date);
+  setPrice(_price);
+  setPooling(_pooling);
+  setQuantity(_quantity);
+  setStock(_stock);
+  
 }
 
 Tablet::~Tablet() {
