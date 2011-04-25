@@ -9,12 +9,24 @@ protected:
   int dose;
   
 public:
-  Sachet();	
+  Sachet();
+  
+  Sachet(int const _id,
+         string const  _name,
+         string const  _laboratory,
+         Date const  _date,
+         float const  _price,
+         float const  _pooling,
+         int const  _quantity,
+         int const  _stock,
+
+         int const  _dose
+         );	
   ~Sachet();
 
   // START: gets and sets
-  virtual int getDose() const;
-  virtual void setDose(int value);
+  int getDose() const;
+  void setDose(int value);
   // END: gets and sets  
   
   // START: methods

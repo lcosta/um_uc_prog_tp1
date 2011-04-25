@@ -33,11 +33,11 @@ void Drug::setLaboratory(string value) {
   laboratory = value;
 }
 
-string Drug::getExpirationDate() const {
+Date Drug::getExpirationDate() const {
   return expiration_date;
 }
 
-void Drug::setExpirationDate(string value) {
+void Drug::setExpirationDate(Date value) {
   expiration_date = value;
 }
 

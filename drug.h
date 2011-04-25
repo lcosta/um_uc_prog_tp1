@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "date.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ protected:
   int id;
   string name;
   string laboratory;
-  string expiration_date;
+  Date expiration_date;
   float price;
   float pooling;
   string measure_unit;
@@ -36,8 +37,8 @@ public:
   virtual string getLaboratory() const;
   virtual void setLaboratory(string value);
   
-  virtual string getExpirationDate() const;
-  virtual void setExpirationDate(string value);
+  virtual Date getExpirationDate() const;
+  virtual void setExpirationDate(Date value);
   
   virtual float getPrice() const;
   virtual void setPrice(float value);

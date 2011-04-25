@@ -11,13 +11,24 @@ protected:
   
 public:
   Syrup();	
+  Syrup( int _id,
+         string const _name,
+         string const _laboratory,
+         Date _date,
+         float const _price,
+         float const _pooling,
+         int const _quantity,
+         int const _stock,
+
+         int const _dose,
+         string const _type_of_casing);	
   ~Syrup();
 
   // START: gets and sets
-  virtual int getDose() const;
-  virtual void setDose(int value);
-  virtual string getTypeOfCasing() const;
-  virtual void setTypeOfCasing(string value);
+  int getDose() const;
+  void setDose(int value);
+  string getTypeOfCasing() const;
+  void setTypeOfCasing(string value);
   // END: gets and sets  
   
   
