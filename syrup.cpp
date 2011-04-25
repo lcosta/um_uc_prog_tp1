@@ -54,3 +54,8 @@ void Syrup::setTypeOfCasing(string value) {
   type_of_casing = value;
 }
 
+void Syrup::print() {
+  Drug::print();
+  cout << "\t" << getQuantity() << " x " << getDose() << getMeasureUnit() 
+    << " | " << getTypeOfCasing() << "\n";
+}

@@ -31,3 +31,7 @@ Varied::Varied(int const _id,
 Varied::~Varied() {
 }
 
+void Varied::print() {
+  Drug::print();
+  cout << "\t" << getQuantity() << " " <<  getMeasureUnit() << "\n";
+}

@@ -31,3 +31,7 @@ Tablet::Tablet(int const _id,
 Tablet::~Tablet() {
 }
 
+void Tablet::print() {
+  Drug::print();
+  cout << "\t" << getQuantity() << " " <<  getMeasureUnit() << "\n";
+}

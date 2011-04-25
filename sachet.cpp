@@ -3,7 +3,7 @@
 Sachet::Sachet() : Drug() {
   
   // configure specific unit of product
-  setMeasureUnit("gr"); 
+  setMeasureUnit("gr(s)"); 
 }
 
 
@@ -18,8 +18,8 @@ Sachet::Sachet(int const _id,
                
                int const  _dose) : Drug() {
   
-  setMeasureUnit("gr");
-  
+  setMeasureUnit("gr(s)");
+
   setId(_id);
   setName(_name);
   setLaboratory(_laboratory);
@@ -43,4 +43,10 @@ int Sachet::getDose() const {
 
 void Sachet::setDose(int value) {
   dose = value;
+}
+
+
+void Sachet::print() {
+  Drug::print();
+  cout << "\t" << getQuantity() << " x " << getDose() << getMeasureUnit() << "\n";
 }

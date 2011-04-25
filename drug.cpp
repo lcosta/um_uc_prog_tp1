@@ -98,5 +98,8 @@ void Drug::setStock(int value) {
 
 
 // START: methods
-
+void Drug::print() {
+  cout << getId() << " | " << getName() << "\n";
+  cout << "\t" << getPrice() << " | " << getPooling() << " | " << getStock() << "\n";
+}
 // END: methods

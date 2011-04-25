@@ -30,6 +30,7 @@ public:
   // END: gets and sets  
   
   // START: methods
+  void print();
   // END: methods
   
 

@@ -58,15 +58,9 @@ public:
   
   
   // START: methods
+  virtual void print();
   // END: methods
   
-
-	// método responsável por escrever o estado do Vehicle para o ostream out
-	//virtual void print(std::ostream &out) const;
-	
-	// métodos responsáveis por ler e escrever o estado do Vehicle v
-	//static void write(std::ostream &out, Vehicle * v);
-	//static Vehicle * read(std::istream &in);
 };
 
 #endif
