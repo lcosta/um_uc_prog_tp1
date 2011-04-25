@@ -13,17 +13,26 @@ public:
   virtual string getName(){
     return name;
   }
+  
+  void write(std::ostream &out){
+    out << name << endl;
+    
+  }
 };
 class Cat: public Mammal {
 public:
-  
+  string eye;
   Cat(string const n){
     name = n;
+    eye = "blue";
     cout << "Init Class Cat with: " << name << "\n";
     
   }
   
-
+  void write(std::ostream &out){
+    Mammal::write(out);
+    out << eye << endl;
+  }
   
 };
 class Platypus: public Mammal {
@@ -36,7 +45,15 @@ public:
   bool laysEggs() { 
     return true; 
   }
+  /*
+  void write(std::ostream &out){
+    Mammal::write(out);
+  }
+  */
 };
+
+
+
 
 class Data {
 protected:
@@ -65,6 +82,7 @@ public:
     for (int i=0; i < count; i++) {
       db[i] = old[i];
     }
+    delete[] old;
   }
   
   void add(Mammal *m){
@@ -169,9 +187,14 @@ int main()
    d.add(&c);
    */
   
-  
+
   c3->name = "x1";
+  Platypus *pl = new Platypus("platypus 1");
   
+  cout << "TESTE WRITE:\n";
+  c3->write(std::cout);
+  pl->write(std::cout);
+  cout << "TESTE WRITE:\n";
   
   cout << c3->getName() << "\n";
   cout << c3->name << "\n";
