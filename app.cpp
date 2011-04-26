@@ -26,6 +26,7 @@ void printMenuDrugs();
 void getdir (string dir);
 int addDrug();
 void editDrug();
+void salesDrugs();
 
 string getString(string msg){
   string s;
@@ -94,8 +95,9 @@ int main() {
     }
     else {
       printMenuMain();
-      cin >> opt_phar;
-      cin.ignore();
+      //cin >> opt_phar;
+      //cin.ignore();
+      opt_phar = getInt("");
     }
 
     
@@ -137,9 +139,7 @@ int main() {
         switch (opt) {
             
           case 0:// Editar Farmacia
-            
-            cout << "Introduza o novo nome? ";
-            
+            name_in = getString("Introduza o novo nome? ");
             current_pharmacy.setName(name_in);
             
             current_pharmacy.saveToFile();
@@ -224,6 +224,7 @@ int main() {
             break;
             
           case 7:// Vender medicamento
+            salesDrugs();
             break;
             
           case 8:// Menu principal 
@@ -254,6 +255,78 @@ int main() {
   
   return 0;
   
+}
+
+void salesDrugs(){
+  Drug * sale_drug;
+  Client * sale_client;
+  float sale_total = 0;
+  int idx;
+  int id_d;
+  
+  cout << "Escolha na lista abaixo um ID de cliente:\n\n";
+  current_pharmacy.listClients();
+  cout << endl;
+  
+  
+  
+  int id_c = getInt("digite o ID? ");
+  idx = current_pharmacy.existIdClients(id_c);
+  
+  if (idx >= 0) {
+    
+    sale_client = current_pharmacy.getClientByIdx(idx);
+    
+    bool sale_p = false;
+    int _sale_p = getInt("Informe se o cliente tem receita para aplicar a comparticipação [1:sim e 2:não]? ");
+    cout << endl << endl;
+    if (_sale_p == 1) {
+      sale_p = true;
+    }
+    else {
+      sale_p = false;
+    }
+
+    
+    cout << "Escolha na lista abaixo o ID de medicamento:\n\n";
+    current_pharmacy.listDrugs();
+    cout << endl;
+    
+    id_d = 1000;
+    while(id_d > 0){
+      cout << "digite o ID [-1:sair]? ";
+      cin >> id_d;
+      cin.ignore();
+      
+      idx = current_pharmacy.existIdDrugs(id_d);
+      if ( idx >= 0) {
+        sale_drug = current_pharmacy.getDrugByIdx(idx);
+        
+        cout << "Comprar: " << sale_drug->getName() << " | preço: ";
+        
+        if (sale_drug->getQuantity() > 0) {
+          sale_drug->setQuantity(sale_drug->getQuantity() - 1);
+          
+          sale_total += sale_drug->getPrice(sale_p);
+          cout << sale_drug->getPrice(sale_p) << endl << endl;
+          
+        }
+
+      }
+      else {
+        cout << "Não existe stock para este medicamento\n";
+      }
+
+      
+      
+    }
+    
+    cout << "Total de vendas: " << sale_total << "€";
+    cout << " para o cliente: " << sale_client->getName() << endl << endl;
+    
+    current_pharmacy.saveToFile();
+  }
+
 }
 
 void editDrug(){  
@@ -326,7 +399,7 @@ void editDrug(){
     
   }  
   else {
-    cout << "Já não existe medicamento com este ID\n";
+    cout << "Não existe medicamento com este ID\n";
   }
 }
 
@@ -453,44 +526,47 @@ int addDrug(){
 
 
 void printMenuMain() {
-  std::cout << std::endl << std::endl;
-  std::cout << " **** Menu Principal ****" << std::endl;
-  std::cout << "|----------------------|" << std::endl;
-  std::cout << "|  1 - Criar Farmacia  |" << std::endl;
-  std::cout << "|  2 - Abrir Farmacia  |" << std::endl;
-  std::cout << "|  3 - Menu Opcoes     |" << std::endl;
-  std::cout << "|  4 - Sair            |" << std::endl;
-  std::cout << " ---------------------- " << std::endl;
+  cout << endl << endl;
+  cout << " **** Menu Principal ****" << endl;
+  cout << "|----------------------|" << endl;
+  cout << "|  1 - Criar Farmacia  |" << endl;
+  cout << "|  2 - Abrir Farmacia  |" << endl;
+  cout << "|  3 - Menu Opcoes     |" << endl;
+  cout << "|  4 - Sair            |" << endl;
+  cout << " ---------------------- " << endl;
+  cout << "digite a opção? " << endl;
 }
 
 void printMenuOptions() {
-  std::cout << std::endl << std::endl;
-  std::cout << " ******* Menu Opcoes  ********" << std::endl;
-  std::cout << "|****************************|" << std::endl;
-  std::cout << "|   0 - Editar farmacia      |" << std::endl;
-  std::cout << "|   1 - Inserir medicamento  |" << std::endl;
-  std::cout << "|   2 - Inserir cliente      |" << std::endl;
-  std::cout << "|   3 - Listar medicamento(s)|" << std::endl;
-  std::cout << "|   4 - Listar cliente(s)    |" << std::endl;
-  std::cout << "|   5 - Editar medicamento   |" << std::endl;
-  std::cout << "|   6 - Editar cliente       |" << std::endl;
-  std::cout << "|   7 - Vender Medicamento   |" << std::endl;
-  std::cout << "|   8 - Menu Principal       |" << std::endl;
-  std::cout << "|   9 - Sair                 |" << std::endl;
-  std::cout << " **************************** " << std::endl;
+  cout << endl << endl;
+  cout << " ******* Menu Opcoes  ********" << endl;
+  cout << "|****************************|" << endl;
+  cout << "|   0 - Editar farmacia      |" << endl;
+  cout << "|   1 - Inserir medicamento  |" << endl;
+  cout << "|   2 - Inserir cliente      |" << endl;
+  cout << "|   3 - Listar medicamento(s)|" << endl;
+  cout << "|   4 - Listar cliente(s)    |" << endl;
+  cout << "|   5 - Editar medicamento   |" << endl;
+  cout << "|   6 - Editar cliente       |" << endl;
+  cout << "|   7 - Vender Medicamento   |" << endl;
+  cout << "|   8 - Menu Principal       |" << endl;
+  cout << "|   9 - Sair                 |" << endl;
+  cout << " **************************** " << endl;
+  cout << "digite a opção? " << endl;
 }
 
 void printMenuDrugs() {
-  std::cout << std::endl << std::endl;
-  std::cout << "**Menu Tipo de Medicamento***" << std::endl;
-  std::cout << "|---------------------------|" << std::endl;
-  std::cout << "|   1 - Comprimido          |" << std::endl;
-  std::cout << "|   2 - Xarope              |" << std::endl;
-  std::cout << "|   3 - Saquetas            |" << std::endl;
-  std::cout << "|   4 - Outros              |" << std::endl;
-  std::cout << "|   5 - Voltar              |" << std::endl;
-  std::cout << "|   6 - Sair                |" << std::endl;
-  std::cout << " -------------------------- " << std::endl;
+  cout << endl << endl;
+  cout << "**Menu Tipo de Medicamento***" << endl;
+  cout << "|---------------------------|" << endl;
+  cout << "|   1 - Comprimido          |" << endl;
+  cout << "|   2 - Xarope              |" << endl;
+  cout << "|   3 - Saquetas            |" << endl;
+  cout << "|   4 - Outros              |" << endl;
+  cout << "|   5 - Voltar              |" << endl;
+  cout << "|   6 - Sair                |" << endl;
+  cout << " --------------------------- " << endl;
+  cout << "digite a opção? " << endl;
 }
 
 void getdir (string dir)
@@ -500,11 +576,18 @@ void getdir (string dir)
   if((dp  = opendir(dir.c_str())) == NULL) {
     cout << "Error - opening " << dir << endl;
   }
-  
-  while ((dirp = readdir(dp)) != NULL) {
-    if(strcmp(dirp->d_name, ".") != 0 && strcmp(dirp->d_name, "..") != 0){
-      cout << string(dirp->d_name) << "\n";
+  else {
+    while ((dirp = readdir(dp)) != NULL) {
+      if(strcmp(dirp->d_name, ".") != 0 && strcmp(dirp->d_name, "..") != 0){
+        cout << string(dirp->d_name) << "\n";
+      }
     }
+    closedir(dp);
+    cout << "\nLista de IDs das famácias existentes, digite o desejado: ";
   }
-  closedir(dp);
+
+  
+  
+  
+  
 }

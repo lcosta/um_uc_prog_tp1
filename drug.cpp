@@ -99,9 +99,9 @@ void Drug::setStock(int value) {
 
 // START: methods
 void Drug::print() {
-  cout << "[ID:" << getId() << "] | " << getName();
+  cout << "[ID:" << getId() << "] " << getName() << " | lad:" << getLaboratory();
   cout << " | ex. date: " << getExpirationDate().getDate() << "\n";
-  cout << "\t" << getPrice() << "€ | " << getPooling() * 100 << "% | stk:" << getStock() << "\n";
+  cout << "\t" << getPrice() << "€ | " << getPooling() * 100 << "% | stock:" << getStock() << "\n";
 }
 
 void Drug::write(std::ostream &out){

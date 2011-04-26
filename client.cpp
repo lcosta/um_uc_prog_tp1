@@ -38,7 +38,7 @@ void Client::setAge(int value) {
 }
 
 void Client::print(){
-  cout << getId() << " | " << getName() << " | " << getAge() << "\n"; 
+  cout << "[ID:" << getId() << "] " << getName() << " | idade: " << getAge() << "\n"; 
 }
 
 void Client::write(std::ostream &out){

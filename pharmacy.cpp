@@ -48,9 +48,14 @@ Drug * Pharmacy::getDrugByIdx(int idx) {
 }
 
 void Pharmacy::listDrugs() {
-  for (int i = 0; i < drugs_count; i++) {
-    drugs[i]->print();
+  if (drugs_count > 0) {
+    for (int i = 0; i < drugs_count; i++) {
+      drugs[i]->print();
+    }
   }
+  else {
+    cout << "\n Não existe ainda medicamentos nesta farmácia.\n";
+  }   
 }
 
 
@@ -72,9 +77,14 @@ void Pharmacy::addClient(Client *new_client) {
 }
 
 void Pharmacy::listClients() {
-  for (int i = 0; i < clients_count; i++) {
-    clients[i]->print();
+  if (clients_count > 0) {
+    for (int i = 0; i < clients_count; i++) {
+      clients[i]->print();
+    }
   }
+  else {
+    cout << "\n Não existe ainda clientes nesta farmácia.\n";
+  }   
 }
 
 
@@ -86,6 +96,10 @@ int Pharmacy::existIdClients(int id_search) {
     }
   }
   return match;
+}
+
+Client * Pharmacy::getClientByIdx(int idx) {
+  return clients[idx];
 }
 
 void Pharmacy::editClient(int id_search, Client *new_client) {
@@ -303,7 +317,6 @@ void Pharmacy::readFromFile(int open_id){
     //START: Add Clients in file
     for (int i=0; i < clients_count_in_file; i++) {
       int id_c_in_file;
-      //inFromFile.ignore();
       inFromFile >> id_c_in_file;
       
       inFromFile.ignore();

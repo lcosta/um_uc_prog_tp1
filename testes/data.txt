@@ -1,0 +1,9 @@
+3
+cat
+x1
+blue
+cat
+Field1000
+green
+platypus
+platypus 1

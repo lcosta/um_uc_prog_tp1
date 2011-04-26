@@ -41,6 +41,7 @@ public:
   void listClients();
   int existIdClients(int id_search);
   void editClient(int id_search, Client *new_client);
+  Client * getClientByIdx(int idx);
   
   void expandDrugs();
   void expandClients();
