@@ -117,8 +117,9 @@ void Pharmacy::readFromFile(){
   if(!inFromFile.fail()) {
     
     
-    string name_in_file;
-    getline(inFromFile, name_in_file);
+    string name_f_in_file;
+    getline(inFromFile, name_f_in_file);
+    setName(name_f_in_file);
     
     
     
@@ -135,6 +136,8 @@ void Pharmacy::readFromFile(){
     
     
     
+    
+    //START: Add Drugs in file
     for (int i= 0; i < drugs_count_in_file; i++) {
       string class_name;
       getline(inFromFile, class_name);
@@ -165,11 +168,7 @@ void Pharmacy::readFromFile(){
       
       int stock_in_file;
       inFromFile >> stock_in_file;
-      
 
-      
-      
-      //Drug *d;
       if ( class_name.compare("sachet") == 0 ) {
         int dose_in_file;
         inFromFile.ignore();
@@ -233,17 +232,37 @@ void Pharmacy::readFromFile(){
                            stock_in_file));
       }
     }
-     
+    //END: Add Drugs in file
+    
+    //START: Add Clients in file
+    for (int i=0; i < clients_count_in_file; i++) {
+      int id_c_in_file;
+      //inFromFile.ignore();
+      inFromFile >> id_c_in_file;
+      
+      inFromFile.ignore();
+      
+      string name_c_in_file;
+      getline(inFromFile, name_c_in_file);
+      
+
+      
+      
+      int age_c_in_file;
+      inFromFile >> age_c_in_file;
+      
+      
+      addClient(new Client(id_c_in_file, name_c_in_file, age_c_in_file));
+      
+      
+    }
+    //END: Add Clients in file
     
     
     inFromFile.close();
   }
   else {
     cout << "Error reading file..." << endl;
-    // inicializar o array de veículos
-    //currentSize = 2;
-    //vehicles = new Vehicle*[currentSize];
-    //n_vehicles = 0;
   }
   
 }
