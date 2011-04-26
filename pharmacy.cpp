@@ -42,6 +42,17 @@ void Pharmacy::listDrugs() {
 }
 
 
+int Pharmacy::existIdDrugs(int id_search) {
+  int match = -1;
+  for (int i = 0; i < drugs_count; i++) {
+    if (drugs[i]->getId() == id_search) {
+      match = i;
+    }
+  }
+  return match;
+}
+
+
 void Pharmacy::addClient(Client *new_client) {
   clients[clients_count] = new_client;
   clients_count++;
@@ -51,6 +62,24 @@ void Pharmacy::addClient(Client *new_client) {
 void Pharmacy::listClients() {
   for (int i = 0; i < clients_count; i++) {
     clients[i]->print();
+  }
+}
+
+int Pharmacy::existIdClients(int id_search) {
+  int match = -1;
+  for (int i = 0; i < clients_count; i++) {
+    if (clients[i]->getId() == id_search) {
+      match = i;
+    }
+  }
+  return match;
+}
+
+void Pharmacy::editClient(int id_search, Client *new_client) {
+  for (int i = 0; i < clients_count; i++) {
+    if (clients[i]->getId() == id_search) {
+      clients[i] = new_client;
+    }
   }
 }
 

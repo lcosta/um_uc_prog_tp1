@@ -25,12 +25,43 @@ void printMenuOptions();
 void getdir (string dir);
 
 
+string getString(string msg){
+  string s;
+  
+  cout << msg;
+  getline (cin,s);
+  
+  if (s.length() == 0) {
+    cout << "\nintroduza um nome valido.\n";
+    return getString(msg);
+  }
+  
+  return s;
+}
+
+int getInt(string msg){
+  int i;
+  
+  cout << msg;
+  cin >> i;
+  
+  if (i <= 0) {
+    cin.ignore();
+    cout << "\nintroduza um valor maior que 0.\n";
+    return getInt(msg);
+  }
+  
+  return i;
+}
+
 int main() {
   
   bool run = true;
   int opt;
   int opt_phar;
   string name_in;
+  
+  Client *client_in = new Client();
   
   int go_to = -1;
   while(run) {
@@ -75,9 +106,7 @@ int main() {
           case 0:// Editar Farmacia
             
             cout << "Introduza o novo nome? ";
-            //cin >> name_in;
-            //cin.getline (name_in, 100);
-            getline (cin,name_in);
+            
             current_pharmacy.setName(name_in);
             
             current_pharmacy.saveToFile();
@@ -89,7 +118,25 @@ int main() {
           case 1:// Inserir medicamento
             break;
             
-          case 2:// Inserir cliente 
+          case 2:// Inserir cliente
+            opt = getInt("ID do cliente? ");
+            cin.ignore();
+            if (current_pharmacy.existIdClients(opt) == -1) {
+              
+              client_in->setId(opt);
+              
+              client_in->setName(getString("Nome do cliente? "));
+              
+              client_in->setAge(getInt("Idade do cliente? "));
+              cin.ignore();
+              current_pharmacy.addClient(client_in);
+              
+              current_pharmacy.saveToFile();
+            }
+            else {
+              cout << "Já existe cliente com este ID\n";
+            }
+
             break;
             
           case 3:// Listar medicamneto
@@ -103,7 +150,28 @@ int main() {
           case 5:// Editar medicamento
             break;
             
-          case 6:// Editar cliente 
+          case 6:// Editar cliente
+            opt = getInt("ID do cliente? ");
+            cin.ignore();
+            if (current_pharmacy.existIdClients(opt) != -1) {
+              
+              client_in->setId(opt);
+              
+              client_in->setName(getString("Nome do cliente? "));
+              
+              client_in->setAge(getInt("Idade do cliente? "));
+              cin.ignore();
+              current_pharmacy.editClient(opt, client_in);
+              
+              current_pharmacy.saveToFile();
+            }
+            else {
+              cout << "Não existe cliente com este ID\n";
+            }
+            
+            
+            
+            
             break;
             
           case 7:// Vender medicamento

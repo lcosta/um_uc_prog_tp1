@@ -33,9 +33,12 @@ public:
   // START: methods
   void addDrug(Drug *new_drug);
   void listDrugs();
+  int existIdDrugs(int id_search);
   
   void addClient(Client *new_client);
   void listClients();
+  int existIdClients(int id_search);
+  void editClient(int id_search, Client *new_client);
   
   void expandDrugs();
   void expandClients();
