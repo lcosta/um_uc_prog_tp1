@@ -3,22 +3,13 @@
 #include <typeinfo>
 #include <string>
 #include <dirent.h>
-
 #include "drugs_package.h"
-
 #include "pharmacy.h"
-
-
-
-
 
 
 using namespace std;
 
-
 Pharmacy current_pharmacy = Pharmacy();
-
-
 
 void printMenuMain();
 void printMenuOptions();
@@ -78,14 +69,9 @@ int main() {
   int opt_phar;
   string name_in;
 
-  
-  
-  
   Client *client_in = new Client();
-  
-  
-  
   int go_to = -1;
+  
   while(run) {
     
     
@@ -95,13 +81,10 @@ int main() {
     }
     else {
       printMenuMain();
-      //cin >> opt_phar;
-      //cin.ignore();
       opt_phar = getInt("");
     }
 
-    
-    
+
     switch (opt_phar) {
         
       case 1: // Criar Farmacia
@@ -249,7 +232,6 @@ int main() {
         break;
       default:cout << "Tente novamente..." << endl;
         break;
-
     }
   }
   
@@ -268,8 +250,6 @@ void salesDrugs(){
   current_pharmacy.listClients();
   cout << endl;
   
-  
-  
   int id_c = getInt("digite o ID? ");
   idx = current_pharmacy.existIdClients(id_c);
   
@@ -286,7 +266,6 @@ void salesDrugs(){
     else {
       sale_p = false;
     }
-
     
     cout << "Escolha na lista abaixo o ID de medicamento:\n\n";
     current_pharmacy.listDrugs();
@@ -316,9 +295,6 @@ void salesDrugs(){
       else {
         cout << "Não existe stock para este medicamento\n";
       }
-
-      
-      
     }
     
     cout << "Total de vendas: " << sale_total << "€";
@@ -371,8 +347,7 @@ void editDrug(){
     pooling = getFloat("Valor de comparticipação? ");
     quantity = getInt("Quantidade por caixa? ");
     stock = getInt("Stock? ");
-    
-    
+
     // all drugs
     edit_drug->setName(name);
     edit_drug->setLaboratory(laboratory);
@@ -447,9 +422,6 @@ int addDrug(){
     pooling = getFloat("Valor de comparticipação? ");
     quantity = getInt("Quantidade por caixa? ");
     stock = getInt("Stock? ");
-    
-    
-    
     
     switch (opt) {
       case 1: //Comprimido
@@ -585,9 +557,4 @@ void getdir (string dir)
     closedir(dp);
     cout << "\nLista de IDs das famácias existentes, digite o desejado: ";
   }
-
-  
-  
-  
-  
 }

@@ -33,7 +33,6 @@ public:
   void print();
   void write(std::ostream &out);
   // END: methods
-  
 
 };
 

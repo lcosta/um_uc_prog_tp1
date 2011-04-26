@@ -345,13 +345,3 @@ void Pharmacy::readFromFile(int open_id){
   }
   
 }
-     
-
-
-
-
-
-
-
-
-
