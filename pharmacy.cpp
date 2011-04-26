@@ -122,7 +122,7 @@ void Pharmacy::saveToFile(){
   stringstream save_id_str;
   save_id_str << getId();
   
-  string str = "db/" + save_id_str.str() + ".txt";
+  string str = "db/" + save_id_str.str();
   const char * file_name = str.c_str();
   
   fstream outToFile;
@@ -148,7 +148,7 @@ void Pharmacy::readFromFile(int open_id){
   stringstream open_id_str;
   open_id_str << open_id;
   
-  string str = "db/" + open_id_str.str() + ".txt";
+  string str = "db/" + open_id_str.str();
   const char * file_name = str.c_str();
   
   
