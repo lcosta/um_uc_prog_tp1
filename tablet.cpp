@@ -35,3 +35,8 @@ void Tablet::print() {
   Drug::print();
   cout << "\t" << getQuantity() << " " <<  getMeasureUnit() << "\n";
 }
+
+void Tablet::write(std::ostream &out){
+  out << "tablet\n";
+  Drug::write(out);
+}

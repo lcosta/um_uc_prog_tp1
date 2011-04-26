@@ -28,6 +28,7 @@ public:
   
   // START: methods
   void print();
+  void write(std::ostream &out);
   // END: methods
   
 

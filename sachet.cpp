@@ -50,3 +50,9 @@ void Sachet::print() {
   Drug::print();
   cout << "\t" << getQuantity() << " x " << getDose() << getMeasureUnit() << "\n";
 }
+
+void Sachet::write(std::ostream &out){
+  out << "sachet\n";
+  Drug::write(out);
+  out << getDose() << "\n";
+}

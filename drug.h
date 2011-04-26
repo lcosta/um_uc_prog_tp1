@@ -59,6 +59,7 @@ public:
   
   // START: methods
   virtual void print();
+  virtual void write(std::ostream &out);
   // END: methods
   
 };

@@ -102,4 +102,9 @@ void Drug::print() {
   cout << getId() << " | " << getName() << "\n";
   cout << "\t" << getPrice() << " | " << getPooling() << " | " << getStock() << "\n";
 }
+
+void Drug::write(std::ostream &out){
+  out << getId() << "\n" << getName() << "\n" << getLaboratory() << "\n";
+  out << getPrice() << "\n" << getPooling() << "\n" << getQuantity() << "\n" << getStock() << "\n";
+}
 // END: methods

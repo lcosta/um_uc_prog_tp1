@@ -59,3 +59,10 @@ void Syrup::print() {
   cout << "\t" << getQuantity() << " x " << getDose() << getMeasureUnit() 
     << " | " << getTypeOfCasing() << "\n";
 }
+
+void Syrup::write(std::ostream &out){
+  out << "syrup\n";
+  Drug::write(out);
+  out << getDose() << "\n";
+  out << getTypeOfCasing() << "\n";
+}

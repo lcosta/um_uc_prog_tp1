@@ -15,6 +15,11 @@ protected:
   
 public:
   Client();	
+  
+  Client(int const _id,
+         string const  _name,
+         int const _age); 
+  
   ~Client();
 
   // START: gets and sets
@@ -28,6 +33,8 @@ public:
   
   
   // START: methods
+  void print();
+  void write(std::ostream &out);
   // END: methods
   
 

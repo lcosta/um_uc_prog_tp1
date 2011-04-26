@@ -1,12 +1,14 @@
 #ifndef _pharmacy_h_
 #define _pharmacy_h_
 
-#include "drug.h"
+#include "drugs_package.h"
 #include "client.h"
+#include "date.h"
+
 
 class Pharmacy {
 protected:
-  int id;
+  string id;
   string name;
   
   Drug ** drugs;
@@ -20,8 +22,8 @@ public:
   ~Pharmacy();
 
   // START: gets and sets
-  int getId() const;
-  void setId(int value);
+  string getId() const;
+  void setId(string value);
 
   string getName() const;
   void setName(string value);
@@ -29,12 +31,20 @@ public:
   
   
   // START: methods
-  void addDrug1(Drug *new_drug, Drug *new_drug2, Drug *new_drug3);
-  void addDrug(Drug new_drug);
+  void addDrug(Drug *new_drug);
   void listDrugs();
   
-  void addClient(Client new_client);
+  void addClient(Client *new_client);
   void listClients();
+  
+  void expandDrugs();
+  void expandClients();
+  
+  void writeDrugs(ostream &out);
+  void writeClients(ostream &out);
+  void saveToFile();
+  void readFromFile();
+  
   // END: methods
   
 
