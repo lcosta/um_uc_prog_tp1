@@ -209,7 +209,16 @@ void Pharmacy::readFromFile(int open_id){
       string laboratory_in_file;
       getline(inFromFile, laboratory_in_file);
       
-      //Date expiration_date_in_file;
+      
+      int day_in_file, month_in_file, year_in_file;
+      inFromFile >> day_in_file;
+      inFromFile.ignore();
+      inFromFile >> month_in_file;
+      inFromFile.ignore();
+      inFromFile >> year_in_file;
+      inFromFile.ignore();
+      Date expiration_date_in_file = Date(day_in_file, month_in_file, year_in_file); 
+      
       
       float price_in_file;
       inFromFile >> price_in_file;
