@@ -12,11 +12,11 @@ Pharmacy::Pharmacy() {
 Pharmacy::~Pharmacy() {
 }
 
-string Pharmacy::getId() const {
+int Pharmacy::getId() const {
   return id;
 }
 
-void Pharmacy::setId(string value) {
+void Pharmacy::setId(int value) {
   id = value;
 }
 
@@ -89,13 +89,16 @@ void Pharmacy::writeClients(ostream &out){
 }
 
 void Pharmacy::saveToFile(){
-  std::fstream outToFile;
   
-  //string file_name = getId() + ".txt.db";
+  stringstream save_id_str;
+  save_id_str << getId();
   
-
-
-  outToFile.open("db.txt", ofstream::out|ofstream::trunc);
+  string str = "db/" + save_id_str.str() + ".txt";
+  const char * file_name = str.c_str();
+  
+  fstream outToFile;
+  
+  outToFile.open(file_name, ofstream::out|ofstream::trunc);
   if(!outToFile.fail()) {
     outToFile << getName() << "\n";
     outToFile << drugs_count << "\n";
@@ -110,10 +113,22 @@ void Pharmacy::saveToFile(){
 }
 
 
-void Pharmacy::readFromFile(){
-
+void Pharmacy::readFromFile(int open_id){
+  
+  
+  stringstream open_id_str;
+  open_id_str << open_id;
+  
+  string str = "db/" + open_id_str.str() + ".txt";
+  const char * file_name = str.c_str();
+  
+  
   fstream inFromFile;
-  inFromFile.open("db.txt", ios::in);
+  
+  
+
+  
+  inFromFile.open(file_name, ios::in);
   if(!inFromFile.fail()) {
     
     

@@ -8,7 +8,7 @@
 
 class Pharmacy {
 protected:
-  string id;
+  int id;
   string name;
   
   Drug ** drugs;
@@ -22,8 +22,8 @@ public:
   ~Pharmacy();
 
   // START: gets and sets
-  string getId() const;
-  void setId(string value);
+  int getId() const;
+  void setId(int value);
 
   string getName() const;
   void setName(string value);
@@ -43,7 +43,7 @@ public:
   void writeDrugs(ostream &out);
   void writeClients(ostream &out);
   void saveToFile();
-  void readFromFile();
+  void readFromFile(int open_id);
   
   // END: methods
   
