@@ -35,6 +35,18 @@ void Pharmacy::addDrug(Drug *new_drug) {
   expandDrugs();
 }
 
+void Pharmacy::editDrug(int id_search, Drug *new_drug) {
+  for (int i = 0; i < drugs_count; i++) {
+    if (drugs[i]->getId() == id_search) {
+      drugs[i] = new_drug;
+    }
+  }
+}
+
+Drug * Pharmacy::getDrugByIdx(int idx) {
+  return drugs[idx];
+}
+
 void Pharmacy::listDrugs() {
   for (int i = 0; i < drugs_count; i++) {
     drugs[i]->print();
@@ -64,6 +76,7 @@ void Pharmacy::listClients() {
     clients[i]->print();
   }
 }
+
 
 int Pharmacy::existIdClients(int id_search) {
   int match = -1;

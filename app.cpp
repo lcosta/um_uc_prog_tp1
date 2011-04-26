@@ -25,6 +25,7 @@ void printMenuOptions();
 void printMenuDrugs();
 void getdir (string dir);
 int addDrug();
+void editDrug();
 
 string getString(string msg){
   string s;
@@ -75,16 +76,12 @@ int main() {
   int opt;
   int opt_phar;
   string name_in;
-  int int_in;
+
   
   
   
   Client *client_in = new Client();
   
-  Tablet *tablet_in = new Tablet();
-  Syrup *syrup_in = new Syrup();
-  Sachet *sachet_in = new Sachet();
-  Varied *varied_in = new Varied();
   
   
   int go_to = -1;
@@ -113,6 +110,8 @@ int main() {
         current_pharmacy.setId(opt_phar);
         current_pharmacy.setName(name_in);
         current_pharmacy.saveToFile();
+        
+        cout << "\nFarmácia '" << name_in << "' criada com sucesso\n\n";
         
         break;
         
@@ -160,6 +159,7 @@ int main() {
             break;
             
           case 2:// Inserir cliente
+            cout << endl;
             opt = getInt("ID do cliente? ");
             cin.ignore();
             if (current_pharmacy.existIdClients(opt) == -1) {
@@ -173,26 +173,36 @@ int main() {
               current_pharmacy.addClient(client_in);
               
               current_pharmacy.saveToFile();
+              
             }
             else {
               cout << "Já existe cliente com este ID\n";
             }
-
+            cout << endl;
             break;
             
           case 3:// Listar medicamneto
+            cout << endl;
             current_pharmacy.listDrugs();
+            cout << endl;
             break;
             
           case 4:// Listar cliente
+            cout << endl;
             current_pharmacy.listClients();
+            cout << endl;
             break;
             
           case 5:// Editar medicamento
+            cout << endl;
             
+            editDrug();
+            
+            cout << endl;
             break;
             
           case 6:// Editar cliente
+            cout << endl;
             opt = getInt("ID do cliente? ");
             cin.ignore();
             if (current_pharmacy.existIdClients(opt) != -1) {
@@ -210,10 +220,7 @@ int main() {
             else {
               cout << "Não existe cliente com este ID\n";
             }
-            
-            
-            
-            
+            cout << endl;
             break;
             
           case 7:// Vender medicamento
@@ -228,7 +235,9 @@ int main() {
             run = false;
             break;
             
-          default:cout << "Tente novamente..." << endl;
+          default:
+            cout << endl;
+            cout << "Tente novamente..." << endl;
             break;
         }
         
@@ -247,10 +256,83 @@ int main() {
   
 }
 
+void editDrug(){  
+  int id_drug;
+  string name;
+  string laboratory;
+  Date expiration_date;
+  int day, month, year;
+  float price;
+  float pooling;
+  int quantity;
+  int stock;
+  
+  int dose;
+  string type_of_casing;
+  
+  id_drug = getInt("ID do medicamento? ");
+  cin.ignore();
+  
+  int idx = current_pharmacy.existIdDrugs(id_drug);
+  if ( idx >= 0) {
+    
+    
+    Drug * edit_drug = current_pharmacy.getDrugByIdx(idx);
+    
+    cout << "Registo actual:" << endl << endl;
+    edit_drug->print();
+    cout << endl;
+    
+    name = getString("Nome do medicamento? ");
+    laboratory = getString("Nome do laboratório? ");
+    
+    cout << "Data de validade:\n";
+    year = getInt("ano? ");
+    cin.ignore();
+    month = getInt("mês? ");
+    cin.ignore();
+    day = getInt("dia? ");
+    expiration_date = Date(day, month, year);
+    
+    price = getFloat("Preço? ");
+    pooling = getFloat("Valor de comparticipação? ");
+    quantity = getInt("Quantidade por caixa? ");
+    stock = getInt("Stock? ");
+    
+    
+    // all drugs
+    edit_drug->setName(name);
+    edit_drug->setLaboratory(laboratory);
+    edit_drug->setExpirationDate(expiration_date);
+    edit_drug->setPrice(price);
+    edit_drug->setPooling(pooling);
+    edit_drug->setQuantity(quantity);
+    edit_drug->setStock(stock);
+    
+    if (typeid(*edit_drug) == typeid(Syrup)) {
+      dose = getInt("Doses? ");
+      type_of_casing = getString("Tipo de invólucro? ");
+      
+      ((Syrup*)edit_drug)->setDose(dose);
+      ((Syrup*)edit_drug)->setTypeOfCasing(type_of_casing);
+    }
+    
+    else if (typeid(*edit_drug) == typeid(Sachet)) {
+      dose = getInt("Doses? ");
+      ((Sachet*)edit_drug)->setDose(dose);
+    }
+    
+    current_pharmacy.saveToFile();
+    
+  }  
+  else {
+    cout << "Já não existe medicamento com este ID\n";
+  }
+}
 
 int addDrug(){
   
-  int opt, int_in;
+  int opt;
   int go_to = 3;
   
   int id_drug;
@@ -371,6 +453,7 @@ int addDrug(){
 
 
 void printMenuMain() {
+  std::cout << std::endl << std::endl;
   std::cout << " **** Menu Principal ****" << std::endl;
   std::cout << "|----------------------|" << std::endl;
   std::cout << "|  1 - Criar Farmacia  |" << std::endl;
@@ -381,6 +464,7 @@ void printMenuMain() {
 }
 
 void printMenuOptions() {
+  std::cout << std::endl << std::endl;
   std::cout << " ******* Menu Opcoes  ********" << std::endl;
   std::cout << "|****************************|" << std::endl;
   std::cout << "|   0 - Editar farmacia      |" << std::endl;
@@ -397,6 +481,7 @@ void printMenuOptions() {
 }
 
 void printMenuDrugs() {
+  std::cout << std::endl << std::endl;
   std::cout << "**Menu Tipo de Medicamento***" << std::endl;
   std::cout << "|---------------------------|" << std::endl;
   std::cout << "|   1 - Comprimido          |" << std::endl;

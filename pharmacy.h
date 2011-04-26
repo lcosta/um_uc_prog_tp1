@@ -34,6 +34,8 @@ public:
   void addDrug(Drug *new_drug);
   void listDrugs();
   int existIdDrugs(int id_search);
+  void editDrug(int id_search, Drug *new_drug);
+  Drug * getDrugByIdx(int idx);
   
   void addClient(Client *new_client);
   void listClients();
